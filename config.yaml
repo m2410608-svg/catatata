@@ -1,0 +1,41 @@
+# Обозначение задачи
+data_task_name:
+  name: "images"
+
+data:
+  # Источник данных
+  source: local
+  image_size: 28
+  n_features: 784
+  n_classes: 10
+  
+  # Параметры разбиения
+  test_size: 0.2
+  random_state: 42
+
+model:
+  # Тип модели
+  type: logistic_regression
+  
+  # Параметры LogisticRegression (scikit-learn)
+  params:
+    multi_class: multinomial
+    solver: lbfgs
+    max_iter: 1000
+    random_state: 42
+
+paths:
+  # Пути к файлам (относительно корня проекта)
+  model: models/model.json
+  features: models/features.pkl
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+  title: "Images Classifier API"
+  version: "1.0.0"
+
+logging:
+  level: INFO
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
